@@ -6,30 +6,29 @@ local LocalPlayer = Players.LocalPlayer
 local AllowedPlaceIds = {
     Dandys_World = {
         id = 16116270224,
-        loadstring = "loadstring(game:HttpGet("https://raw.githubusercontent.com/wdesadwdaws/Cracking-Hub/refs/heads/main/Dandys_World.lua"))()"
+        url = "https://raw.githubusercontent.com/wdesadwdaws/Cracking-Hub/refs/heads/main/Dandys_World.lua"
     },
     Bulid_Ur_Base = {
-        id = 75366259315586
-        loadstring = "loadstring(game:HttpGet("https://raw.githubusercontent.com/wdesadwdaws/Cracking-Hub/refs/heads/main/Bulid_Ur_Base.lua"))()
+        id = 75366259315586,
+        url = "https://raw.githubusercontent.com/wdesadwdaws/Cracking-Hub/refs/heads/main/Bulid_Ur_Base.lua"
     }
 }
 
 local function isAllowedPlace()
-    for name, id in pairs(AllowedPlaceIds) do
-        if game.PlaceId == id then
-            return true, name
+    for name, data in pairs(AllowedPlaceIds) do
+        if data.id and game.PlaceId == data.id then
+            return true, name, data.url, data.id
         end
     end
-    return false, nil
+    return false, nil, nil, nil
 end
 
-local allowed, placeName = isAllowedPlace()
+local allowed, placeName, url, placeId = isAllowedPlace()
 
 if not allowed then
-    LocalPlayer:Kick("Wrong game. This script dose not support this game")
+    warn("Wrong game. This script does not support this game")
     return
 end
 
-if placeName == "Dandys_World" then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/wdesadwdaws/Cracking-Hub/refs/heads/main/Dandys_World.lua"))()
-end
+print("Loaded for:", placeName, "| PlaceId:", placeId)
+loadstring(game:HttpGet(url))()
