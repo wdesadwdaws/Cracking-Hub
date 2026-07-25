@@ -20,6 +20,6 @@ end
 
 if isAllowedPlace() then
   if AllowedPlaceIds.Dandys_World then
-    
-  ned
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/wdesadwdaws/Cracking-Hub/refs/heads/main/Dandys_World.lua"))()
+    end
 end
