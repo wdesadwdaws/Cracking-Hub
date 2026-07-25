@@ -1,5 +1,5 @@
 local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
+local LocalPlayer = Players.LocalPlayer or Players:GetPropertyChangedSignal("LocalPlayer"):Wait() and Players.LocalPlayer
 
 local AllowedPlaceIds = {
     Dandys_World = 16116270224,
@@ -17,7 +17,9 @@ end
 local allowed, placeName = isAllowedPlace()
 
 if not allowed then
-    LocalPlayer:Kick("Wrong game. Prompixy Aura only works in the correct place.")
+    if LocalPlayer then
+        LocalPlayer:Kick("Wrong game. Prompixy Aura only works in the correct place.")
+    end
     return
 end
 
