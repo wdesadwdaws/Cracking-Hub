@@ -19,7 +19,7 @@ end
 local allowed, placeName = isAllowedPlace()
 
 if not allowed then
-    LocalPlayer:Kick("Wrong game. Prompixy Aura only works in the correct place.")
+    LocalPlayer:Kick("Wrong game. This script dose not support this game")
     return
 end
 
