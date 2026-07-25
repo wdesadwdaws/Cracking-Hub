@@ -4,7 +4,14 @@ repeat task.wait() until Players.LocalPlayer
 local LocalPlayer = Players.LocalPlayer
 
 local AllowedPlaceIds = {
-    Dandys_World = 16116270224,
+    Dandys_World = {
+        id = 16116270224,
+        loadstring = "loadstring(game:HttpGet("https://raw.githubusercontent.com/wdesadwdaws/Cracking-Hub/refs/heads/main/Dandys_World.lua"))()"
+    },
+    Bulid_Ur_Base = {
+        id = 75366259315586
+        loadstring = "loadstring(game:HttpGet("https://raw.githubusercontent.com/wdesadwdaws/Cracking-Hub/refs/heads/main/Bulid_Ur_Base.lua"))()
+    }
 }
 
 local function isAllowedPlace()
